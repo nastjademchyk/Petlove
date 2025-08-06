@@ -17,8 +17,8 @@
   height: 384px;
   background: #f6b83d;
   display: flex;
+  justify-content: space-around;
   align-items: flex-end;
-
   padding-bottom: 32px;
 }
 
