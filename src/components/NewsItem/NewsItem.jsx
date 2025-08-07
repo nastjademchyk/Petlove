@@ -1,36 +1,25 @@
 import s from './NewsItem.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import {
-  selectNews,
-  selectIsLoading,
-  selectError,
-} from '../../redux/news/selectors.js';
-import { fetchNews } from '../../redux/news/operations';
 
-const NewsItem = () => {
-  const dispatch = useDispatch();
-  const news = useSelector(selectNews);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  useEffect(() => {
-    dispatch(fetchNews());
-  }, [dispatch]);
-
+const NewsItem = ({ item }) => {
+  const formatDate = dateString => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
   return (
-    <>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <p>Here will be list with news</p>
-      <ul>
-        {news.map(item => (
-          <li key={item._id}>
-            <p>Title: {item.title}</p>
-            <p>Text: {item.text}</p>
-          </li>
-        ))}
-      </ul>
-    </>
+    <li className={s.wrapper}>
+      <img src={item.imgUrl} alt={item.title} className={s.img} />
+      <h3 className={s.header}>{item.title}</h3>
+      <p className={s.description}>{item.text}</p>
+      <div className={s.box}>
+        <p className={s.date}>{formatDate(item.date)}</p>
+        <a className={s.read} href={item.url} target="_blank">
+          Read more
+        </a>
+      </div>
+    </li>
   );
 };
 
