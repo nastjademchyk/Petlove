@@ -1,0 +1,32 @@
+.name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+.icon {
+  border-radius: 1px;
+  fill: #f6b83d;
+  stroke-width: 2px;
+  stroke: #f6b83d;
+  width: 24px;
+  height: 24px;
+}
+.iconCircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #fff4df;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  gap: 13px;
+}

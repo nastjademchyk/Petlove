@@ -1,6 +1,7 @@
 import AuthNav from '../AuthNav/AuthNav';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
+import UserBar from '../UserBar/UserBar';
 import s from './Header.module.css';
 import clsx from 'clsx';
 

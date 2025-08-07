@@ -1,0 +1,45 @@
+.wrapper {
+  border-radius: 30px;
+  width: 1216px;
+  height: 216px;
+  background: #fff4df;
+  margin-top: 40px;
+}
+
+.stroke {
+  height: 1px;
+  width: 1136px;
+  background-color: rgba(38, 38, 38, 0.1);
+}
+
+.field {
+  border-radius: 30px;
+  padding: 14px 119px 14px 14px;
+  width: 200px;
+  height: 48px;
+  background: #fff;
+  border: none;
+}
+
+.form {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+.wrapper {
+  padding: 40px;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.item {
+  border-radius: 30px;
+  padding: 14px;
+  background: #fff;
+  height: 48px;
+}
