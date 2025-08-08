@@ -11,11 +11,11 @@
 .home {
   position: absolute;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   left: 0;
   width: 100%;
   background-color: transparent;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 96px;
+  padding-right: 96px;
 }

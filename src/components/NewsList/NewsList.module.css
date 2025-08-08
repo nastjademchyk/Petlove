@@ -1,7 +1,6 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 68px;
+  row-gap: 40px;
   column-gap: 35px;
-  margin-top: 60px;
 }

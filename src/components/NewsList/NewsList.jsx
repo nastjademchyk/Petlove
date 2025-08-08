@@ -8,8 +8,9 @@ import {
   selectError,
 } from '../../redux/news/selectors.js';
 import { fetchNews } from '../../redux/news/operations';
+import Loader from '../Loader/Loader.jsx';
 
-const NewsList = () => {
+const NewsList = ({ loadingProgress }) => {
   const dispatch = useDispatch();
   const news = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoading);
@@ -20,7 +21,7 @@ const NewsList = () => {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader percentage={loadingProgress} />}
       {error && <p>{error}</p>}
 
       <ul className={s.grid}>
