@@ -2,7 +2,7 @@
   position: relative;
   border-radius: 15px;
   width: 100%;
-  max-width: 361px;
+  /* max-width: 361px; */
   min-height: 476px;
   flex: 1 1 calc((100% - 70px) / 3);
   padding-bottom: 70px;
@@ -23,8 +23,7 @@
 
 .img {
   border-radius: 15px;
-  width: 361px;
-  height: 226px;
+  width: 100%;
 }
 
 .header {
