@@ -8,8 +8,11 @@ import { ErrorMessage } from 'formik';
 import catImage from '../../assets/images/cat.png';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
+import { useState } from 'react';
+import sprite from '../../assets/icons.svg';
 
 const RegistrationPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const initialValues = {
     name: '',
     email: '',
@@ -111,23 +114,55 @@ const RegistrationPage = () => {
                 className={s.item}
               ></Field>
               <ErrorMessage name="email" component="span" className={s.error} />
-              <Field
-                type="password"
-                name="password"
-                placeholder="Password"
-                className={s.item}
-              ></Field>
+              <div className={s.passwordWrapper}>
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  className={s.item}
+                />
+                <button
+                  type="button"
+                  className={s.passwordToggle}
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <svg className={s.icon}>
+                    <use
+                      href={`${sprite}#icon-${
+                        showPassword ? 'eye-open' : 'eye-off'
+                      }`}
+                    />
+                  </svg>
+                </button>
+              </div>
               <ErrorMessage
                 name="password"
                 component="span"
                 className={s.error}
               />
-              <Field
-                type="password"
-                name="confirmpassword"
-                placeholder="Confirm password"
-                className={s.item}
-              ></Field>
+              <div className={s.passwordWrapper}>
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="confirmpassword"
+                  placeholder="Confirm password"
+                  className={s.item}
+                />
+                <button
+                  type="button"
+                  className={s.passwordToggle}
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <svg className={s.icon}>
+                    <use
+                      href={`${sprite}#icon-${
+                        showPassword ? 'eye-open' : 'eye-off'
+                      }`}
+                    />
+                  </svg>
+                </button>
+              </div>
               <ErrorMessage
                 name="confirmpassword"
                 component="span"

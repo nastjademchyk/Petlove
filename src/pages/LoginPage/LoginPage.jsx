@@ -7,8 +7,11 @@ import dogImage from '../../assets/images/dog.png';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { signing } from '../../redux/auth/operations';
+import { useState } from 'react';
+import sprite from '../../assets/icons.svg';
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = async (values, { resetForm }) => {
@@ -93,12 +96,28 @@ const LoginPage = () => {
                 placeholder="Email"
                 className={s.item}
               ></Field>
-              <Field
-                type="password"
-                name="password"
-                placeholder="Password"
-                className={s.item}
-              ></Field>
+              <div className={s.passwordWrapper}>
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  className={s.item}
+                />
+                <button
+                  type="button"
+                  className={s.passwordToggle}
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <svg className={s.icon}>
+                    <use
+                      href={`${sprite}#icon-${
+                        showPassword ? 'eye-open' : 'eye-off'
+                      }`}
+                    />
+                  </svg>
+                </button>
+              </div>
               <button type="submit" className={s.btn}>
                 Log In
               </button>
