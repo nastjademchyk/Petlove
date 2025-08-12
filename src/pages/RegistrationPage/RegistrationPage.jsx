@@ -2,9 +2,12 @@ import s from './RegistrationPage.module.css';
 import cat1 from '../../assets/images/web/cat/cat-web-x1.png';
 import cat2 from '../../assets/images/web/cat/cat-web-x2.png';
 import { Field, Formik, Form as FormikForm } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { ErrorMessage } from 'formik';
+import catImage from '../../assets/images/cat.png';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
 
 const RegistrationPage = () => {
   const initialValues = {
@@ -14,11 +17,29 @@ const RegistrationPage = () => {
     confirmpassword: '',
   };
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (values, actions) => {
+    try {
+      const resultAction = await dispatch(
+        register({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
+
+      if (register.fulfilled.match(resultAction)) {
+        navigate('/profile');
+      } else {
+        console.error(resultAction.payload);
+      }
+    } catch (error) {
+      console.error(error);
+    }
     actions.resetForm();
   };
-
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     email: Yup.string()
@@ -35,6 +56,25 @@ const RegistrationPage = () => {
   return (
     <div className={s.wrapper}>
       <div className={s.left}>
+        <div className={s.box}>
+          <div className={s.left_small}>
+            <div className={s.imgCover}>
+              <img src={catImage} alt="cat" className={s.img} />
+            </div>
+          </div>
+          <div className={s.right_small}>
+            <div className={s.header_box}>
+              <p className={s.cat_name}>Jack</p>
+              <p className={s.birthday}>
+                Birthday: <span className={s.accent}>18.10.2021</span>
+              </p>
+            </div>
+            <div className={s.cat_description}>
+              Jack is a gray Persian cat with green eyes. He loves to be
+              pampered and groomed, and enjoys playing with toys.
+            </div>
+          </div>
+        </div>
         <div className={s.imageWrapper}>
           <img
             src={cat1}

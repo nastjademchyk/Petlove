@@ -4,6 +4,10 @@ axios.defaults.baseURL = 'https://petlove.b.goit.study/api';
 
 //Register new user
 
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
 export const register = createAsyncThunk(
   'auth/register',
   async ({ name, email, password }, thunkAPI) => {
@@ -13,8 +17,8 @@ export const register = createAsyncThunk(
         email,
         password,
       });
-
-      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+      setAuthHeader(data.token);
+      localStorage.setItem('token', data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -25,16 +29,13 @@ export const register = createAsyncThunk(
 );
 
 //Login user
-
 export const signing = createAsyncThunk(
   'auth/signing',
   async ({ email, password }, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signin', {
-        email,
-        password,
-      });
-      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+      const { data } = await axios.post('/users/signin', { email, password });
+      setAuthHeader(data.token);
+      localStorage.setItem('token', data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -43,7 +44,6 @@ export const signing = createAsyncThunk(
     }
   }
 );
-
 //Logout
 
 export const logout = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
@@ -60,22 +60,24 @@ export const logout = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
 });
 
 //Refresh
-
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const token = state.auth.token;
+    const token = state.auth.token || localStorage.getItem('token');
+
     if (!token) {
       return thunkAPI.rejectWithValue('No token found');
     }
 
     try {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      setAuthHeader(token);
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || 'Refresh failed'
+      );
     }
   }
 );

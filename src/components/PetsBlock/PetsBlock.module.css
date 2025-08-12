@@ -1,0 +1,13 @@
+.customBtn {
+  background: #fff4df;
+  border-radius: 30px;
+  padding: 15px 35px;
+  width: 136px;
+  height: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+}
