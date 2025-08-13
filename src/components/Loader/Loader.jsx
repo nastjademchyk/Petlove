@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import img from '../../assets/images/web/bg/bg-web-x2.png';
 
 const Loader = () => {
   const [percentage, setPercentage] = useState(0);
@@ -25,7 +26,10 @@ const Loader = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        background: '#f0f0f0',
+        backgroundImage: `url(${img})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       <div style={{ width: 200, height: 200 }} className="loader-wrapper">

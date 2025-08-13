@@ -12,6 +12,11 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  background-image: url('../../assets/images//RectangleBG.png');
+  background-repeat: no-repeat;
+  background-position: center calc(100% + 22px);
+  background-size: 531px 601px;
+  
 }
 
 .imageWrapper {
