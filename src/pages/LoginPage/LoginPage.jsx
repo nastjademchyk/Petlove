@@ -89,39 +89,43 @@ const LoginPage = () => {
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
           >
-            <FormikForm className={s.form}>
-              <Field
-                type="email"
-                name="email"
-                placeholder="Email"
-                className={s.item}
-              ></Field>
-              <div className={s.passwordWrapper}>
+            {({ errors, touched, values }) => (
+              <FormikForm className={s.form}>
                 <Field
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Password"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
                   className={s.item}
                 />
-                <button
-                  type="button"
-                  className={s.passwordToggle}
-                  onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? 'Hide password' : 'Show password'}
-                >
-                  <svg className={s.icon}>
-                    <use
-                      href={`${sprite}#icon-${
-                        showPassword ? 'eye-open' : 'eye-off'
-                      }`}
-                    />
-                  </svg>
+                <div className={s.passwordWrapper}>
+                  <Field
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    placeholder="Password"
+                    className={s.item}
+                  />
+                  <button
+                    type="button"
+                    className={s.passwordToggle}
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={
+                      showPassword ? 'Hide password' : 'Show password'
+                    }
+                  >
+                    <svg className={s.icon}>
+                      <use
+                        href={`${sprite}#icon-${
+                          showPassword ? 'eye-open' : 'eye-off'
+                        }`}
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <button type="submit" className={s.btn}>
+                  Log In
                 </button>
-              </div>
-              <button type="submit" className={s.btn}>
-                Log In
-              </button>
-            </FormikForm>
+              </FormikForm>
+            )}
           </Formik>
 
           <p className={s.additional}>

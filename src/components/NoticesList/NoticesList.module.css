@@ -1,0 +1,7 @@
+.noticeListWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 32px;
+  justify-content: center;
+  margin-top: 40px;
+}

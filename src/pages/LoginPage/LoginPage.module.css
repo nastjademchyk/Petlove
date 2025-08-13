@@ -16,7 +16,6 @@
   background-repeat: no-repeat;
   background-position: center calc(100% + 22px);
   background-size: 531px 601px;
-  
 }
 
 .imageWrapper {
@@ -73,6 +72,11 @@
   padding: 16px 10px 16px 16px;
   width: 424px;
   height: 52px;
+}
+
+.item:focus {
+  outline: none;
+  border: 1px solid #f6b83d;
 }
 
 .btn {

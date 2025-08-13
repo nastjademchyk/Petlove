@@ -7,7 +7,7 @@ const NoticesFilters = () => {
       <div className={s.top}>
         <Formik>
           <FormikForm className={s.form}>
-            <SearchField />
+            {/* <SearchField /> */}
             <Field as="select" name="category" className={s.field}></Field>
             <Field as="select" name="gender" className={s.field}></Field>
             <Field as="select" name="type" className={s.field}></Field>
