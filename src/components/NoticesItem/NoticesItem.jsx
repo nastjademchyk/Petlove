@@ -2,19 +2,23 @@ import s from './NoticesItem.module.css';
 import sprite from '../../assets/icons.svg';
 import { useState } from 'react';
 import ModalAttention from '../ModalAttention/ModalAttention';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import ModalNotice from '../ModalNotice/ModalNotice';
+import { fetchNoticeById } from '../../redux/notices/operations';
 
 const NoticesItem = ({ notice, onClick }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [autorisedModalOpen, setAutorisedModalOpen] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
   const handleOpenModal = () => {
     if (!isLoggedIn) {
       setIsModalOpen(true);
     } else {
-      setAutorisedModalOpen(true);
+      dispatch(fetchNoticeById(notice._id)).then(() => {
+        setAutorisedModalOpen(true);
+      });
     }
   };
 
