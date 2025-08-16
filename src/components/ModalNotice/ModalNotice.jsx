@@ -42,6 +42,24 @@ const ModalNotice = ({ onClose }) => {
             <img src={notice.imgURL} alt={notice.title} className={s.image} />
           </div>
           <p>{notice.title}</p>
+          <div className={s.stars}>
+            <svg className={s.icon_start}>
+              <use href={`${sprite}#icon-Star`} />
+            </svg>
+            <svg className={s.icon_start}>
+              <use href={`${sprite}#icon-Star`} />
+            </svg>
+            <svg className={s.icon_start}>
+              <use href={`${sprite}#icon-Star`} />
+            </svg>
+            <svg className={s.icon_start}>
+              <use href={`${sprite}#icon-Star`} />
+            </svg>
+            <svg className={s.icon_start}>
+              <use href={`${sprite}#icon-Star`} />
+            </svg>
+            <div>{notice.popularity}</div>
+          </div>
           <div className={s.description}>
             <div className={s.small_description}>
               <p className={s.name}>Name</p>
@@ -61,11 +79,7 @@ const ModalNotice = ({ onClose }) => {
             </div>
           </div>
           <p className={s.comment}>{notice.comment}</p>
-          <div className={s.stars}>
-            <svg className={s.icon_start}>
-              <use href={`${sprite}#icon-Star`} />
-            </svg>
-          </div>
+
           <div className={s.price}>${notice.price}</div>
           <div className={s.btns}>
             <button className={s.add}>
