@@ -4,10 +4,12 @@ axios.defaults.baseURL = 'https://petlove.b.goit.study/api';
 
 export const fetchNotices = createAsyncThunk(
   'notices/fetchNotices',
-  async (_, thunkAPI) => {
+  async ({ page = 2, perPage = 6 }, thunkAPI) => {
     try {
-      const response = await axios.get('/notices');
-      return response.data.results;
+      const response = await axios.get('/notices', {
+        params: { page, perPage },
+      });
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

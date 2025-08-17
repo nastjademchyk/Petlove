@@ -1,4 +1,5 @@
 import FriendsList from '../../components/FriendsList/FriendsList';
+import Pagination from '../../components/Pagination/Pagination';
 import Title from '../../components/Title/Title';
 import s from './OurFriendsPage.module.css';
 const OurFriendsPage = () => {

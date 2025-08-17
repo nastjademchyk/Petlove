@@ -16,7 +16,7 @@ const NoticesList = ({ loadingProgress }) => {
   const error = useSelector(selectError);
   const notices = useSelector(selectNotice);
   useEffect(() => {
-    dispatch(fetchNotices());
+    dispatch(fetchNotices({ page: 1, perPage: 6 }));
   }, [dispatch]);
 
   return (

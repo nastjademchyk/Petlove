@@ -5,5 +5,9 @@
   row-gap: 28px;
   width: 100%;
   margin-top: 60px;
-  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.wrapper li {
+  flex: 1 1 371px;
 }

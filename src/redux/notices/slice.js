@@ -8,6 +8,8 @@ const noticeSlice = createSlice({
     selectedNotice: null,
     isLoading: false,
     error: null,
+    totalPages: 0,
+    currentPage: 1,
   },
   extraReducers: builder => {
     builder
@@ -17,7 +19,9 @@ const noticeSlice = createSlice({
       })
       .addCase(fetchNotices.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.items = action.payload.results;
+        state.totalPages = action.payload.totalPages;
+        state.currentPage = action.payload.page;
       })
       .addCase(fetchNotices.rejected, (state, action) => {
         state.isLoading = false;
